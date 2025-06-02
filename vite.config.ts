@@ -6,7 +6,9 @@ import fs from 'fs';
 export default defineConfig({
   base: '/butterchurn-recorder/',
   plugins: [
-    solid(),
+    solid({
+      ssr: false
+    }),
     {
       name: 'generate-json-file',
       generateBundle() {
@@ -15,7 +17,7 @@ export default defineConfig({
         var collator = new Intl.Collator([], {numeric: true});
         const filenames = files.sort((a, b) => collator.compare(a, b))
         fs.writeFileSync('public/audioFiles.json', JSON.stringify(filenames));
-    }    
-  },
-  ],
+      }    
+    }
+  ]
 })
