@@ -1,14 +1,12 @@
 import solid from "solid-start/vite";
 import { defineConfig } from "vite";
-import vercel from 'solid-start-vercel'
 //@ts-ignore
 import fs from 'fs';
 
 export default defineConfig({
+  base: '/butterchurn-recorder/',
   plugins: [
-    solid({
-      adapter: vercel({edge:false}),
-    }),
+    solid(),
     {
       name: 'generate-json-file',
       generateBundle() {
